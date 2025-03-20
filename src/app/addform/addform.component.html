@@ -6,15 +6,42 @@
     <label>Prenom et nom</label>
     <input class="form-control" type="text" name="prenom" formControlName="prenom" />
     @if (isvalidate("prenom")){
-      <small class="text-danger"> ce champ est obligatoir</small>
+
+        <small class="text-danger"> ce champ est obligatoir</small>
+
     }
   </div>
   <div class="form-group">
     <label>Age</label>
     <input class="form-control" type="number" name="age" formControlName="age" />
     @if (isvalidate("age")){
-      <small class="text-danger"> ce champ est obligatoir</small>
+      @if (formGroup.get('age')?.hasError("required")){
+        <small class="text-danger"> ce champ est obligatoir</small>
+      }
+      @if (formGroup.get('age')?.hasError("min")){
+        <small class="text-danger"> l'age minimale est 6 ans </small>
+      }
+
+      @if (formGroup.get('age')?.hasError("max")){
+        <small class="text-danger"> l'age maximal est 60 ans</small>
+      }
     }
+  </div>
+    <div class="form-group">
+      <label>Montant</label>
+      <input class="form-control" type="text" name="montant" formControlName="montant" />
+      @if (isvalidate("montant")){
+
+        @if (formGroup.get('montant')?.hasError("required")){
+          <small class="text-danger"> ce champ est obligatoir</small>
+        }
+        @if (formGroup.get('montant')?.hasError("min")){
+          <small class="text-danger"> l'age minimale est 6 ans </small>
+        }
+        @if (formGroup.get('montant')?.hasError("ifmotant")){
+          <small class="text-danger"> la valeur n'est pas multiple de 5 </small>
+        }
+      }
   </div>
   <br>
   <button type="submit" [disabled]="formGroup.invalid" class="btn btn-primary" >Terminer</button>

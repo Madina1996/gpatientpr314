@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {verifieMontant} from '../validator/utils';
 
 @Component({
   selector: 'app-addform',
@@ -9,11 +10,21 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
   styleUrl: './addform.component.css'
 })
 export class AddformComponent {
+  formGroup:FormGroup;
 
-formGroup = new FormGroup({
-  prenom : new FormControl('',[Validators.required]),
-  age : new FormControl('',[Validators.required,Validators.min(6)]),
-})
+  constructor(private  fb: FormBuilder){
+    this.formGroup = this.fb.group({
+      prenom : ['',[Validators.required]],
+      age : ['',[Validators.required,Validators.min(6),Validators.max(60)]],
+      montant : ['',[Validators.required,Validators.min(6),Validators.max(60),verifieMontant()]],
+
+    })
+
+
+  }
+
+
+
 
 save(){
   console.log(this.formGroup.value.prenom)
