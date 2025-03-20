@@ -1,0 +1,36 @@
+<div class="container">
+  <br>
+  <br>
+
+  <br>
+  <button class="btn btn-warning" (click)="moin()" > -</button>
+  {{value}}
+  <button class="btn btn-primary"  (click)="plus()">+</button>
+  <br>
+  <br>
+  <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" [style]="val">{{value}}%</div>
+  </div>
+
+  <br>
+  <br>
+  <div>
+    <input class="form-control" [(ngModel)]="color">
+    <button class="btn btn-primary" (click)="changeColor()"> changer</button>
+  </div>
+  <p [style.color]="mycolor" >
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, aut consequatur distinctio ipsa molestiae mollitia ut. Architecto dolore ea excepturi fuga ipsam iste minima provident quae similique sit! Delectus, labore!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate expedita libero nisi numquam officia. Assumenda corporis dolores id labore maiores minima molestiae mollitia necessitatibus nesciunt, officiis ratione, sapiente similique, tenetur.
+  </p>
+
+  <h3>historiques </h3>
+  <ul class="list-group">
+    @for( c of  colors;track c){
+      <li class="list-group-item curs" (click)="loadColor(c)" >
+        {{c}}
+      </li>
+    }
+
+
+  </ul>
+</div>

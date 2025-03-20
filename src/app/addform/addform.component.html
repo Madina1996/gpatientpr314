@@ -1,0 +1,23 @@
+
+<h3> Add Patient</h3>
+<form [formGroup]="formGroup" (submit)="save()" >
+
+  <div class="form-group">
+    <label>Prenom et nom</label>
+    <input class="form-control" type="text" name="prenom" formControlName="prenom" />
+    @if (isvalidate("prenom")){
+      <small class="text-danger"> ce champ est obligatoir</small>
+    }
+  </div>
+  <div class="form-group">
+    <label>Age</label>
+    <input class="form-control" type="number" name="age" formControlName="age" />
+    @if (isvalidate("age")){
+      <small class="text-danger"> ce champ est obligatoir</small>
+    }
+  </div>
+  <br>
+  <button type="submit" [disabled]="formGroup.invalid" class="btn btn-primary" >Terminer</button>
+</form>
+
+
