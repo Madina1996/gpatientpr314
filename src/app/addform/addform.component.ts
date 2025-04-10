@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {verifieMontant} from '../validator/utils';
+import {PatientService} from '../service/patient.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-addform',
@@ -12,11 +14,16 @@ import {verifieMontant} from '../validator/utils';
 export class AddformComponent {
   formGroup:FormGroup;
 
-  constructor(private  fb: FormBuilder){
+  constructor(private  fb: FormBuilder,
+              private patientService: PatientService,
+              private router:Router) {
     this.formGroup = this.fb.group({
       prenom : ['',[Validators.required]],
-      age : ['',[Validators.required,Validators.min(6),Validators.max(60)]],
-      montant : ['',[Validators.required,Validators.min(6),Validators.max(60),verifieMontant()]],
+      dateNaissance : ['',[Validators.required]],
+      sexe : ['',[Validators.required]],
+      adresse : ['',[Validators.required]],
+      email : ['',[Validators.required,Validators.email]],
+      telephone : ['',[Validators.required]],
 
     })
 
@@ -27,9 +34,8 @@ export class AddformComponent {
 
 
 save(){
-  console.log(this.formGroup.value.prenom)
-
-  //console.log(this.age.value)
+  this.patientService.add(this.formGroup.value);
+  this.router.navigateByUrl("/patients")
 }
 
 

@@ -1,0 +1,35 @@
+
+<br/>
+<button class="btn btn-primary" routerLink="/addform"> Ajouter</button>
+
+<table class="table .table-striped ">
+  <thead>
+  <tr>
+    <th scope="col">Prenom & Nom</th>
+    <th scope="col">Date Naissance</th>
+    <th scope="col">Sexe</th>
+    <th scope="col">Adresse</th>
+    <th scope="col">Telephone</th>
+    <th scope="col">Email</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (p of patients;track p){
+  <tr>
+    <td>{{p.prenom}}</td>
+    <td>{{p.dateNaissance}}</td>
+    <td>{{p.sexe}}</td>
+    <td>{{p.adresse}}</td>
+    <td>{{p.telephone}}</td>
+    <td>{{p.email}}</td>
+    <td>
+    <button class="btn btn-primary">  Modifier  </button>
+    <button class="btn btn-danger"> supprimer  </button>
+    </td>
+  </tr>
+    }
+
+
+  </tbody>
+</table>

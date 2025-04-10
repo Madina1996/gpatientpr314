@@ -3,6 +3,7 @@ import {HomeComponent} from './home/home.component';
 import {FichePatientComponent} from './fiche-patient/fiche-patient.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {AddformComponent} from './addform/addform.component';
+import {ListePatientComponent} from './patient/liste-patient/liste-patient.component';
 
 export const routes: Routes = [
   {
@@ -14,8 +15,8 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path:'patient',
-    component:FichePatientComponent
+    path:'patients',
+    component:ListePatientComponent
   },
   {
     path:'addform',

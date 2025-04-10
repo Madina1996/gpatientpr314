@@ -1,4 +1,5 @@
-import { Component, input, Input } from '@angular/core';
+import {Component, input, Input, OnInit} from '@angular/core';
+import {PatientService} from '../service/patient.service';
 
 @Component({
   selector: 'app-fiche-patient',
@@ -7,7 +8,17 @@ import { Component, input, Input } from '@angular/core';
   templateUrl: './fiche-patient.component.html',
   styleUrl: './fiche-patient.component.css'
 })
-export class FichePatientComponent {
+export class FichePatientComponent implements OnInit {
+
+
+  constructor(private patientService: PatientService) {
+
+  }
+
+  ngOnInit(): void {
+
+  }
+
 
   @Input()
   docteur = "Dr diop";
