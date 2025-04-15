@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+const url ='http://localhost:8080/'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
+
+  http = inject(HttpClient)
 
   patients:any[] = [];
 
@@ -17,5 +21,8 @@ export class PatientService {
     this.patients.push(p);
   }
 
+  getPatients(){
+    return this.http.get(url+"patients", );
+  }
 
 }

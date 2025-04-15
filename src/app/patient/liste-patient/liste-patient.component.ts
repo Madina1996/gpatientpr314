@@ -19,6 +19,20 @@ export class ListePatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.patients = this.patientService.getAll();
+  this.getAllPatient();
+
+  }
+
+
+  getAllPatient(){
+    this.patientService.getPatients().subscribe({
+      next:(data:any)=>{
+        console.log(data)
+    },
+      error:(data)=>{
+      console.log(data)
+    }
+    })
   }
 
 }
